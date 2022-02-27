@@ -12,6 +12,8 @@ public class Block : MonoBehaviour
     public string hash;
     public int prev_hash;
     public bool is_selected = false;
+    public bool is_right_selected = false;
+
     GameObject cubemanager;
     [SerializeField] public InputField data_field;
     public Hashtable hash_tabs = new Hashtable()

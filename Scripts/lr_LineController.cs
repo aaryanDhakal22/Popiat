@@ -5,13 +5,13 @@ using UnityEngine;
 public class lr_LineController : MonoBehaviour
 {
     private LineRenderer lr;
-    private Transform[] points;
+    private Vector3[] points;
 
     private void Awake()
     {
         lr = GetComponent<LineRenderer>();
     }
-    public void SetUpLine(Transform[] points)
+    public void SetUpLine(Vector3[] points)
     {
         lr.positionCount = points.Length;
         this.points = points;
@@ -20,7 +20,7 @@ public class lr_LineController : MonoBehaviour
     {
         for (int i = 0; i < points.Length; i++)
         {
-            lr.SetPosition(i, points[i].position);
+            lr.SetPosition(i, points[i]);
         }
     }
 }
