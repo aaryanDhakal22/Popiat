@@ -4,32 +4,24 @@ using UnityEngine;
 
 public class DragDrop : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private bool is_selected = false;
     private Vector3 dragOffset;
-    [SerializeField]
-    public GameObject[] uis;
-    public void Update()
+    Block myblock;
+    [SerializeField] GameObject blockle;
+    private void Awake()
     {
-        if (Input.GetButtonDown("Cancel"))
-        {
-            if (is_selected)
-            {
-
-            hide_ui();
-            is_selected = false;
-            }
-        }
+        myblock = blockle.GetComponent<Block>();
     }
     private void OnMouseDown()
+      
     {
         dragOffset = transform.position - GetMousePos();
-        show_ui();
-        is_selected = true;
+        myblock.now_selected();
+        
     }
     private void OnMouseDrag()
     {
         transform.position = GetMousePos() + dragOffset;
+        
     }
     Vector3 GetMousePos()
     {
@@ -37,18 +29,7 @@ public class DragDrop : MonoBehaviour
         mousePos.z = 0;
         return mousePos;
     }
-    void show_ui() {
-        for (int i = 0; i < uis.Length; i++)
-        {
-            uis[i].gameObject.SetActive(true);
-        }
-    }
-    void hide_ui() {
-        for (int i = 0; i < uis.Length; i++)
-        {
-            uis[i].gameObject.SetActive(false);
-        }
-    }
+    
     
 
 
